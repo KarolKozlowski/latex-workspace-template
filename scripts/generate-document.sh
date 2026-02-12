@@ -20,7 +20,11 @@ if [[ $# -gt 0 ]]; then
     exit 1
   fi
 else
-  templates=("${template_dir}"/*.tex)
+  templates=()
+  if [[ -d "${template_dir}" ]]; then
+    templates+=("${template_dir}"/*.tex)
+  fi
+  templates+=(""*.tex)
 fi
 
 mkdir -p "${output_dir}"
