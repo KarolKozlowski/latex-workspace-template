@@ -34,12 +34,18 @@ for template in "${templates[@]}"; do
   output="${output_dir}/${base_name}.tex"
 
 
-  pandoc \
-    --from=markdown \
-    --metadata-file=${base_name}-data.yaml \
-    --template="${template}" \
-    --output="${output}" \
-    /dev/null || { echo "Error generating ${output} from ${template}" >&2; exit 1; }
+  data_file="${base_name}-data.yaml"
+  if [[ -f "${data_file}" ]]; then
+    pandoc \
+      --from=markdown \
+      --metadata-file="${data_file}" \
+      --template="${template}" \
+      --output="${output}" \
+      /dev/null || { echo "Error generating ${output} from ${template}" >&2; exit 1; }
+  else
+    echo "Skipping ${template}: missing ${data_file}" >&2
+    output="${template}"
+  fi
 
   # double run to resolve image references
   pdflatex -output-directory "${output_dir}" "${output}"
