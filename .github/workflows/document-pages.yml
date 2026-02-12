@@ -45,7 +45,7 @@ jobs:
           cp generated/*.pdf public/
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/publish'
-        uses: actions/upload-pages-artifact@v3
+        uses: https://github.com/actions/upload-pages-artifact@v3
         with:
           path: public
 
