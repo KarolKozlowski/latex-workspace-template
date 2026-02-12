@@ -1,0 +1,17 @@
+# Ignore output files
+*.pdf
+*.out
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+# ignore logs
+*.log
+# Ignore output files
+*.pdf
+# Ignore backups
+*~
+# Ignore generated 
+generated/

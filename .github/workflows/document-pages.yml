@@ -1,0 +1,62 @@
+name: Build and Publish Document
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/devcontainers/base:debian
+    steps:
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y \
+            ca-certificates \
+            git \
+            pandoc \
+            texlive-base \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-lang-polish \
+            texlive-pictures \
+            poppler-utils
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build PDF
+        run: |
+          set -euo pipefail
+          bash scripts/generate-document.sh
+      - name: Prepare Pages artifact
+        if: github.ref == 'refs/heads/publish'
+        run: |
+          mkdir -p public
+          cp generated/document*.pdf public/
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/publish'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/publish'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

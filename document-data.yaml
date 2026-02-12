@@ -1,0 +1,25 @@
+sections:
+  - title: Introduction
+    content: |
+      This document is generated from YAML-defined sections.
+
+      - Each section has a title and markdown content.
+      - Content is rendered through pandoc into LaTeX.
+
+  - title: Details
+    content: |
+      You can include **bold**, *italic*, and inline math like $E=mc^2$.
+
+      Add more sections by appending items to the `sections` list.
+
+  - title: Lorem Ipsum (Full Width)
+    full_width: true
+    no_indent: true
+    content: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula.
+
+      Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi.
+
+      Morbi lacus quam, mollis ut, volutpat in, aliquet quis, mi. Quisque porta. Vivamus placerat, neque at laoreet auctor, elit purus suscipit enim, sed vulputate magna arcu sed nisl.

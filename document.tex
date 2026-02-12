@@ -1,0 +1,46 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[hmargin=2cm, vmargin=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{needspace}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist[itemize]{leftmargin=1.2cm}
+
+% pandoc uses \tightlist for compact lists
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
+}
+
+\newcommand{\MachineText}[1]{%
+  \leavevmode
+  \hbox to 0pt{%
+    \fontsize{0.1pt}{0pt}\selectfont
+    \color{black!1}{\detokenize{#1}}%
+    \hss
+  }%
+  \ignorespaces
+}
+
+\begin{document}
+
+$for(sections)$
+\section*{$sections.title$}
+  $if(sections.no_indent)$
+  \noindent
+  $endif$
+  $if(sections.full_width)$
+  \begin{minipage}{\textwidth}
+  $endif$
+  $sections.content$
+  $if(sections.full_width)$
+  \end{minipage}
+  $endif$
+
+$endfor$
+
+\end{document}

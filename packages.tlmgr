@@ -1,0 +1,8 @@
+# tlmgr install
+pgf
+setspace
+enumitem
+titlesec
+polski
+# VSCode / LaTeX-Workshop
+latexmk
