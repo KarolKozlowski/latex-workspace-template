@@ -1,0 +1,10 @@
+name: dummy
+
+on:
+  push:
+
+jobs:
+  noop:
+    runs-on: docker
+    steps:
+      - run: echo "Do something instead of falling back to .github workflows"
